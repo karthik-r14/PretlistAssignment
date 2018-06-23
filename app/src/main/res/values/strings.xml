@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">PretlistAssignment</string>
+    <string name="wifi_list">Wifi List</string>
+    <string name="get_wifi_list">Get Wifi list</string>
+    <string name="problem_1">Problem 1</string>
+    <string name="problem_2">Problem 2</string>
+    <string name="permission_missing">You don\'t have required permission to make the Action</string>
+    <string name="wifi_off_msg">Please turn on Wifi to detect networks</string>
+    <string name="wifi_connections_msg">Number of Wifi connections :</string>
 </resources>
