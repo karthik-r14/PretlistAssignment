@@ -8,7 +8,9 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +18,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ import java.util.List;
 public class WifiInfoActivity extends AppCompatActivity {
 
     public static final int MY_PERMISSION_REQUEST_CHANGE_WIFI_STATE = 123;
+    private WifiManager.LocalOnlyHotspotReservation mReservation;
     WifiManager mWifiManager;
     List<ScanResult> wifiList;
     ListView wifiListView;
@@ -74,6 +76,7 @@ public class WifiInfoActivity extends AppCompatActivity {
 
     //Declaring Broadcast receiver to detect wifi networks.
     private final BroadcastReceiver mWifiScanReceiver = new BroadcastReceiver() {
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION)) {
@@ -83,7 +86,7 @@ public class WifiInfoActivity extends AppCompatActivity {
                 wifiData.add(getString(R.string.wifi_connections_msg) + wifiList.size());
 
                 for (int i = 0; i < wifiList.size(); ++i) {
-                    String wifiNetworkData = (i + 1) + "SSID :" + wifiList.get(i).SSID.toString() + "\n" + "BSSID:" + (wifiList.get(i).BSSID).toString();
+                    String wifiNetworkData = (i + 1) + "." + "SSID :" + wifiList.get(i).SSID.toString() + "\n" + "BSSID:" + (wifiList.get(i).BSSID).toString();
                     wifiData.add(wifiNetworkData);
                 }
 
