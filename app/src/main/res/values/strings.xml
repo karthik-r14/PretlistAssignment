@@ -8,4 +8,8 @@
     <string name="wifi_off_msg">Please turn on Wifi to detect networks</string>
     <string name="wifi_connections_msg">Number of Wifi connections :</string>
     <string name="employee_list">Employee List</string>
+    <string name="tap_to_load">Tap to load Employee List</string>
+    <string name="employee_name">Employee Name</string>
+    <string name="employee_dept">Employee Dept</string>
+    <string name="turn_on_internet">Internet is not available.Please turn it on to continue.</string>
 </resources>
