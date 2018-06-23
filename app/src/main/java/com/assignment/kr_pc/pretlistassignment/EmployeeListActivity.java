@@ -30,7 +30,6 @@ public class EmployeeListActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("all_employees");
-        employeeList = new ArrayList<>();
 
         progressBar.setVisibility(View.VISIBLE);
         myRef.addValueEventListener(new ValueEventListener() {
@@ -38,6 +37,7 @@ public class EmployeeListActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated;
+                employeeList = new ArrayList<>();
 
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     //getting employee
