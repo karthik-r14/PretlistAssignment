@@ -65,6 +65,7 @@ public class WifiInfoActivity extends AppCompatActivity {
         }
     }
 
+    //Starting scan to detect wifi networks.
     private void myWifiMethod() {
         mWifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         getApplicationContext().registerReceiver(mWifiScanReceiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));

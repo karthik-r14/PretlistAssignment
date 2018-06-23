@@ -24,7 +24,8 @@
         <activity
             android:name=".WifiInfoActivity"
             android:label="@string/wifi_list" />
-        <activity android:name=".EmployeeListActivity"></activity>
+        <activity android:name=".EmployeeListActivity"
+            android:label="@string/employee_list"></activity>
 
     </application>
 
