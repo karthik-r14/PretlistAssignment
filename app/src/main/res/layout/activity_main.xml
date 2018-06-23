@@ -16,6 +16,7 @@
         android:textStyle="bold"
         android:background="@color/colorPrimaryDark"
         android:layout_margin="5dp"
+        android:onClick="onProblemOneClick"
         android:textSize="35sp" />
 
     <Button
@@ -26,6 +27,7 @@
         android:textStyle="bold"
         android:layout_margin="5dp"
         android:background="@color/colorPrimaryDark"
+        android:onClick="onProblemTwoClick"
         android:textSize="35sp" />
 
 
