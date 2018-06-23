@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WifiInfoActivity extends AppCompatActivity {
@@ -26,16 +27,13 @@ public class WifiInfoActivity extends AppCompatActivity {
     public static final int MY_PERMISSION_REQUEST_CHANGE_WIFI_STATE = 123;
     WifiManager mWifiManager;
     List<ScanResult> wifiList;
-    //    ListView wifiListView;
-    TextView wifiTextView;
+    ListView wifiListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wifi_info);
-//        wifiListView = findViewById(R.id.wifi_listview);
-        wifiTextView = findViewById(R.id.wifi_text);
-
+        wifiListView = findViewById(R.id.wifi_listview);
     }
 
     public void onWifiButtonClick(View view) {
@@ -73,24 +71,24 @@ public class WifiInfoActivity extends AppCompatActivity {
         mWifiManager.startScan();
     }
 
+    //Declaring Broadcast receiver to detect wifi networks.
     private final BroadcastReceiver mWifiScanReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION)) {
                 wifiList = mWifiManager.getScanResults();
+                ArrayList wifiData = new ArrayList();
 
-                //ArrayAdapter<ScanResult> adapter = new ArrayAdapter<>(WifiInfoActivity.this, android.R.layout.simple_list_item_1, wifiList);
-                //wifiListView.setAdapter(adapter);
-                StringBuilder sb = new StringBuilder();
-                sb.append(getString(R.string.wifi_connections_msg) + wifiList.size() + "\n");
+                wifiData.add(getString(R.string.wifi_connections_msg) + wifiList.size());
 
                 for (int i = 0; i < wifiList.size(); ++i) {
-                    sb.append(new Integer(i + 1).toString() + ". ");
-                    sb.append("SSID:" + wifiList.get(i).SSID.toString() + "\n");
-                    sb.append("BSSID:" + (wifiList.get(i).BSSID).toString() + "\n\n");
+                    String wifiNetworkData = (i + 1) + "SSID :" + wifiList.get(i).SSID.toString() + "\n" + "BSSID:" + (wifiList.get(i).BSSID).toString();
+                    wifiData.add(wifiNetworkData);
                 }
 
-                wifiTextView.setText(sb);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(WifiInfoActivity.this, android.R.layout.simple_list_item_1, wifiData);
+                wifiListView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
         }
     };
