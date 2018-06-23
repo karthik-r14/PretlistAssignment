@@ -8,16 +8,6 @@
     android:background="@android:color/black"
     tools:context=".EmployeeListActivity">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="25sp"
-        android:background="@color/colorAccent"
-        android:onClick="onLoadEmployeeButtonClick"
-        android:layout_margin="10dp"
-        android:text="@string/tap_to_load"/>
-
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_gravity="center"

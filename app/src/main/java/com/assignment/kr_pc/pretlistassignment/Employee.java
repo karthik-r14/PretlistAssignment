@@ -1,17 +1,14 @@
 package com.assignment.kr_pc.pretlistassignment;
 
 class Employee {
-    private String empId;
+    private Long empId;
     private String empName;
-    private String empDepartment;
+    private String empDept;
 
-    public Employee(String empId, String name, String department) {
-        this.empId = empId;
-        this.empName = name;
-        this.empDepartment = department;
+    public Employee() {
     }
 
-    public String getEmpId() {
+    public Long getEmpId() {
         return empId;
     }
 
@@ -19,7 +16,7 @@ class Employee {
         return empName;
     }
 
-    public String getEmpDepartment() {
-        return empDepartment;
+    public String getEmpDept() {
+        return empDept;
     }
 }

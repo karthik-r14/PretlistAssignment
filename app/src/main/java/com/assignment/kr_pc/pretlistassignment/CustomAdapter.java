@@ -22,9 +22,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         }
 
         void bind(int listIndex) {
-            empId.setText(employeeList.get(listIndex).getEmpId());
+            empId.setText(employeeList.get(listIndex).getEmpId().toString());
             empName.setText(employeeList.get(listIndex).getEmpName());
-            empDept.setText(employeeList.get(listIndex).getEmpDepartment());
+            empDept.setText(employeeList.get(listIndex).getEmpDept());
         }
     }
 
